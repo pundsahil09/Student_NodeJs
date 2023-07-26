@@ -1,0 +1,16 @@
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+let color = require("colors");
+const route = require("./API");
+
+app.use(express.json());
+app.use("/user",route)
+mongoose.set('strictQuery', true);
+mongoose.connect("mongodb+srv://sahil:Sahilpund100@cluster0.vlajov8.mongodb.net/DEMO?retryWrites=true&w=majority").then((data) => {
+    console.log('<------------ CONNECTION CREATED ------------>'.brightMagenta);
+}).catch((error) => {
+    console.log(`There is some error : ${error}`.red);
+})
+
+app.listen("4500");
