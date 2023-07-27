@@ -92,9 +92,20 @@ route.post("/updateStd", async (req, res) => {
 route.put("/updateStdByPut", async (req, res) => {
     try {
         // let result = await stdModule.findOne({ email:req.body.email },{})
-        let result = await stdModule.findOneAndUpdate({ email:req.body.email },{$set:req.body})
-        
+        let result = await stdModule.findOneAndUpdate({ email: req.body.email }, { $set: req.body })
+
         res.send("Data Updated");
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+// update data using patch
+route.patch("/updateStdByPatch", async (req, res) => {
+    try {
+        const id = req.query.id;
+        let result = await stdModule.findByIdAndUpdate(id, req.body, { new: true });
+        return res.status(200).send(result)
     } catch (error) {
         console.log(error);
     }
