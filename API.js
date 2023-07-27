@@ -104,7 +104,7 @@ route.put("/updateStdByPut", async (req, res) => {
 route.patch("/updateStdByPatch", async (req, res) => {
     try {
         const id = req.query.id;
-        let result = await stdModule.findByIdAndUpdate(id, req.body, { new: true });
+        let result = await stdModule.findByIdAndUpdate(id, req.body, { new: true }); // here new : true returns updated output.
         return res.status(200).send(result)
     } catch (error) {
         console.log(error);
