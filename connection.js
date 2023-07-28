@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 let color = require("colors");
 const route = require("./API");
+const PORT = 4500;
 
 app.use(express.json());
 app.use("/user",route)
@@ -13,4 +14,6 @@ mongoose.connect("mongodb+srv://sahil:Sahilpund100@cluster0.vlajov8.mongodb.net/
     console.log(`There is some error : ${error}`.red);
 })
 
-app.listen("4500");
+app.listen(PORT,()=>{
+    console.log(` App is running on port : ${PORT} `);
+});
