@@ -4,10 +4,11 @@ const mongoose = require("mongoose");
 let color = require("colors");
 const route = require("./API");
 const env = require("dotenv")
-const PORT = 4500;
-
-
 env.config();
+const PORT = process.env.PORT;
+
+
+
 app.use(express.json());
 app.use("/user", route)
 mongoose.set('strictQuery', true);
